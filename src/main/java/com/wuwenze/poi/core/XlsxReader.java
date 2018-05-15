@@ -394,18 +394,19 @@ public class XlsxReader extends DefaultHandler {
 	}
 
 	private String fillChar(String str, int len, char let, boolean isPre) {
+		StringBuilder stringBuilder = new StringBuilder(str);
 		int len_1 = str.length();
 		if (len_1 < len) {
 			if (isPre) {
 				for (int i = 0; i < (len - len_1); i++) {
-					str = let + str;
+					stringBuilder.insert(0 , let);
 				}
 			} else {
 				for (int i = 0; i < (len - len_1); i++) {
-					str = str + let;
+					stringBuilder.append(let);
 				}
 			}
 		}
-		return str;
+		return stringBuilder.toString();
 	}
 }

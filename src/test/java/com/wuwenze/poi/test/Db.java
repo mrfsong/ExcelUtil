@@ -34,10 +34,9 @@ public class Db {
     }
 
     public static Integer getGradeIdByName(String name) {
-        for (Integer key : grades.keySet()) {
-            String val = grades.get(key);
-            if(name.equals(val)) {
-                return key;
+        for(Map.Entry<Integer , String> entry : grades.entrySet()){
+            if(name.equals(entry.getValue())) {
+                return entry.getKey();
             }
         }
         return -1;
