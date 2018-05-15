@@ -251,10 +251,11 @@ public class ExcelKit {
         // 创建新的工作薄。
         SXSSFWorkbook wb = POIUtils.newSXSSFWorkbook();
 
-        double sheetNo = Math.ceil(data.size() / mMaxSheetRecords);// 取出一共有多少个sheet.
+        double sheetNo = Math.ceil(data.size() / mMaxSheetRecords);// 取出一共有多少个sheet. (此处ceil方法返回接近当前结果的最大值)
 
         // =====多sheet生成填充数据=====
-        for (int index = 0; index <= (sheetNo == 0.0 ? sheetNo : sheetNo - 1); index++) {
+//        for (int index = 0; index <= (sheetNo == 0.0 ? sheetNo : sheetNo - 1); index++) {
+        for (int index = 0; index <= sheetNo; index++) {
             SXSSFSheet sheet = POIUtils.newSXSSFSheet(wb, sheetName + (index == 0 ? "" : "_" + index));
 
             // 创建表头
