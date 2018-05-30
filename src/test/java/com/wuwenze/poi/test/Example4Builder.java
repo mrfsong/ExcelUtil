@@ -22,4 +22,14 @@ public class Example4Builder {
                 .setMaxSheetRecords(10000) // 每个sheet的记录数, 默认为10000可以不设置
                 .toExcel(users,"用户信息", new FileOutputStream(excelFile));
     }
+
+    public static void main(String[] args) {
+        Example4Builder builder = new Example4Builder();
+        File outFile = new File("c:\\output.xls");
+        try {
+            builder.builder(outFile);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

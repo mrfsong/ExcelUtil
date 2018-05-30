@@ -36,7 +36,6 @@ import com.wuwenze.poi.hanlder.ExportHandler;
 import com.wuwenze.poi.hanlder.ReadHandler;
 import com.wuwenze.poi.pojo.ExportItem;
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.log4j.Logger;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
@@ -45,6 +44,8 @@ import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -67,7 +68,7 @@ import java.util.Map;
  * @since 2017年4月10日
  */
 public class ExcelKit {
-    private static Logger log = Logger.getLogger(ExcelKit.class);
+    private static Logger log = LoggerFactory.getLogger(ExcelKit.class);
 
     private Class<?> mClass = null;
     private HttpServletResponse mResponse = null;
@@ -252,10 +253,9 @@ public class ExcelKit {
         SXSSFWorkbook wb = POIUtils.newSXSSFWorkbook();
 
         double sheetNo = Math.ceil(data.size() * 1.0D / mMaxSheetRecords);// 取出一共有多少个sheet. (此处ceil方法返回接近当前结果的最大值)
-
+        log.info("sheet total : {}" , sheetNo);
         // =====多sheet生成填充数据=====
-//        for (int index = 0; index <= (sheetNo == 0.0 ? sheetNo : sheetNo - 1); index++) {
-        for (int index = 0; index <= sheetNo; index++) {
+        for (int index = 0; index <= (sheetNo == 0.0 ? sheetNo : sheetNo - 1); index++) {
             SXSSFSheet sheet = POIUtils.newSXSSFSheet(wb, sheetName + (index == 0 ? "" : "_" + index));
 
             // 创建表头

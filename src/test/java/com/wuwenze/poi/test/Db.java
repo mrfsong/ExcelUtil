@@ -16,7 +16,7 @@ public class Db {
         grades.put(2, "二年级学生");
 
         // 用户信息
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 20001; i++) {
             User user = new User()
                     .setUid(i)
                     .setUsername("Username:" + i)

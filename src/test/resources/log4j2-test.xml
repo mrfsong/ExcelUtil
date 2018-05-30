@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration monitorInterval="30">
+	<Properties>
+		<Property name="LOG.PATH">${sys:log.path.prefix:-../logs}</Property>
+		<Property name="LOG.PATTERN">[%p][%d{yyyy-MM-dd HH:mm:ss.SSS}][%t][%c]%m%n</Property>
+	</Properties>
+	<Appenders>
+		<Console name="console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${LOG.PATTERN}" />
+		</Console>
+
+	</Appenders>
+
+	<Loggers>
+		<AsyncRoot level="debug">
+			<AppenderRef ref="console" />
+		</AsyncRoot>
+	</Loggers>
+</Configuration>
