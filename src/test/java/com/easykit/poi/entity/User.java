@@ -1,6 +1,6 @@
-package com.wuwenze.poi.test.entity;
+package com.easykit.poi.test.entity;
 
-import com.wuwenze.poi.annotation.ExportConfig;
+import com.easykit.poi.annotation.ExportConfig;
 
 public class User {
 
@@ -16,10 +16,10 @@ public class User {
     @ExportConfig(value = "性别", width = 50, convert = "s:1=男,2=女")
     private Integer sex;
 
-    @ExportConfig(value = "年级", convert = "c:com.wuwenze.poi.test.convert.GradeIdConvert")
+    @ExportConfig(value = "年级", convert = "c:GradeIdConvert")
     private Integer gradeId;
 
-    @ExportConfig(value = "下拉框", range="c:com.wuwenze.poi.test.convert.RangeConvert")
+    @ExportConfig(value = "下拉框", range="c:RangeConvert")
     private String gendex;
 
 

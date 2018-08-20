@@ -1,8 +1,8 @@
-package com.wuwenze.poi.test;
+package com.easykit.poi.test;
 
-import com.wuwenze.poi.ExcelKit;
-import com.wuwenze.poi.hanlder.ReadHandler;
-import com.wuwenze.poi.test.entity.User;
+import com.easykit.poi.ExcelKit;
+import com.easykit.poi.hanlder.ReadHandler;
+import com.easykit.poi.test.entity.User;
 
 import java.io.File;
 import java.io.FileNotFoundException;
