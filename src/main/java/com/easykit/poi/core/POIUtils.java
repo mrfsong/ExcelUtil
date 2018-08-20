@@ -107,9 +107,14 @@ public class POIUtils {
 			wb.write(out);
 			out.flush();
 		}catch(Exception e){
-			LOGGER.error("writeByLocalOrBrowser Error , detai : {}" ,e.getMessage());
+			LOGGER.error("writeByLocalOrBrowser Error , detail : {}" ,e.getMessage());
 		}finally{
-			out.close();
+			if(out != null){
+				out.close();
+			}
+			if(response != null){
+				response.flushBuffer();
+			}
 		}
 
 	}
