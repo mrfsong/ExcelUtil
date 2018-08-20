@@ -1,4 +1,4 @@
-package com.easykit.poi.test;
+package com.easykit.poi;
 
 public class Example4Export {
 

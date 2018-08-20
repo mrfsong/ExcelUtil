@@ -1,6 +1,6 @@
-package com.easykit.poi.test;
+package com.easykit.poi;
 
-import com.easykit.poi.test.entity.User;
+import com.easykit.poi.entity.User;
 
 import java.util.*;
 

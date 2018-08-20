@@ -1,4 +1,4 @@
-package com.wuwenze.poi.exception;
+package com.easykit.poi.exception;
 
 public class EncounterNoNeedXmlException extends RuntimeException {
 

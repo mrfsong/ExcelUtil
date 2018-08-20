@@ -27,7 +27,7 @@
  * limitations under the License.
 
  */
-package com.wuwenze.poi.pojo;
+package com.easykit.poi.pojo;
 
 public class ExportItem {
 

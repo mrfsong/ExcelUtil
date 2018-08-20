@@ -27,7 +27,7 @@
  * limitations under the License.
 
  */
-package com.wuwenze.poi.core;
+package com.easykit.poi.core;
 
 public final class Const {
 	private Const() {}

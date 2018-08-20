@@ -27,7 +27,7 @@
  * limitations under the License.
 
  */
-package com.wuwenze.poi.annotation;
+package com.easykit.poi.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

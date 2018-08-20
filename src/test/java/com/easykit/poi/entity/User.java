@@ -1,4 +1,4 @@
-package com.easykit.poi.test.entity;
+package com.easykit.poi.entity;
 
 import com.easykit.poi.annotation.ExportConfig;
 

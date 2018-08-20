@@ -27,7 +27,7 @@
  * limitations under the License.
 
  */
-package com.wuwenze.poi.core;
+package com.easykit.poi.core;
 
 import org.apache.poi.ss.usermodel.DataValidation;
 import org.apache.poi.ss.usermodel.DataValidationConstraint;
@@ -37,6 +37,8 @@ import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
@@ -53,6 +55,7 @@ import java.net.URLEncoder;
  */
 public class POIUtils {
 	private static final int mDefaultRowAccessWindowSize = 100;
+	private static final Logger LOGGER = LoggerFactory.getLogger(POIUtils.class);
 
 	public static SXSSFWorkbook newSXSSFWorkbook(int rowAccessWindowSize) {
 		return new SXSSFWorkbook(rowAccessWindowSize);
@@ -92,17 +95,23 @@ public class POIUtils {
 	
 	public static void writeByLocalOrBrowser(HttpServletResponse response, String fileName, SXSSFWorkbook wb,
 			OutputStream out) throws Exception {
-		if(response != null) {
-			// response对象不为空,响应到浏览器下载
-			response.setContentType(Const.XLSX_CONTENT_TYPE);
-			response.setHeader("Content-disposition", "attachment; filename=" + URLEncoder.encode(String.format("%s%s", fileName, Const.XLSX_SUFFIX), "UTF-8"));
-			if (out == null) {
-				out = response.getOutputStream();
+		try{
+			if(response != null) {
+				// response对象不为空,响应到浏览器下载
+				response.setContentType(Const.XLSX_CONTENT_TYPE);
+				response.setHeader("Content-disposition", "attachment; filename=" + URLEncoder.encode(String.format("%s%s", fileName, Const.XLSX_SUFFIX), "UTF-8"));
+				if (out == null) {
+					out = response.getOutputStream();
+				}
 			}
+			wb.write(out);
+			out.flush();
+		}catch(Exception e){
+			LOGGER.error("writeByLocalOrBrowser Error , detai : {}" ,e.getMessage());
+		}finally{
+			out.close();
 		}
-		wb.write(out);
-		out.flush();
-		out.close();
+
 	}
 	/**
 	 * 设置某些列的值只能输入预制的数据,显示下拉框.
