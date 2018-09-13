@@ -86,7 +86,11 @@ public class POIUtils {
 	 */
 	public static void setColumnWidth(SXSSFSheet sheet,int index, short width, String value) {
 		if (width == -1 && value != null && !"".equals(value)) {
-			sheet.setColumnWidth(index, (short) (value.length() * 250));
+			if(CharUtil.isChinese(value)){
+				sheet.setColumnWidth(index, (short) (value.getBytes().length * 2 * 256));//中文适用
+			}else{
+				sheet.setColumnWidth(index, (short) (value.length() * 2 * 256));
+			}
 		} else {
 			width = width == -1 ? 200 : width;
 			sheet.setColumnWidth(index, (short) (width * 35.7));

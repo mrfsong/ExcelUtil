@@ -24,7 +24,7 @@ public class Example4Builder {
 
     public static void main(String[] args) {
         Example4Builder builder = new Example4Builder();
-        File outFile = new File("c:\\output.xls");
+        File outFile = new File("c:\\output.xlsx");
         try {
             builder.builder(outFile);
         } catch (FileNotFoundException e) {

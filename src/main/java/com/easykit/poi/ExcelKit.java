@@ -40,6 +40,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Font;
+import org.apache.poi.ss.util.SheetUtil;
 import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
@@ -262,7 +263,8 @@ public class ExcelKit {
             SXSSFRow headerRow = POIUtils.newSXSSFRow(sheet, 0);
             for (int i = 0; i < exportItems.size(); i++) {
                 SXSSFCell cell = POIUtils.newSXSSFCell(headerRow, i);
-                POIUtils.setColumnWidth(sheet, i, exportItems.get(i).getWidth(), exportItems.get(i).getDisplay());
+//                POIUtils.setColumnWidth(sheet, i, exportItems.get(i).getWidth(), exportItems.get(i).getDisplay());
+                POIUtils.setColumnWidth(sheet, i, (short)-1, exportItems.get(i).getDisplay());
                 cell.setCellValue(exportItems.get(i).getDisplay());
                 CellStyle style = handler.headCellStyle(wb);
                 if (style != null) {
@@ -300,7 +302,8 @@ public class ExcelKit {
                         }
 
                         // 单元格宽度
-                        POIUtils.setColumnWidth(sheet, j, exportItems.get(j).getWidth(), cellValue);
+//                        POIUtils.setColumnWidth(sheet, j, exportItems.get(j).getWidth(), cellValue);
+                        POIUtils.setColumnWidth(sheet, j, (short)-1, cellValue);
 
                         SXSSFCell cell = POIUtils.newSXSSFCell(bodyRow, j);
                         // fix: 当值为“”时,当前index的cell会失效
@@ -524,5 +527,4 @@ public class ExcelKit {
         }
         return nullCellValueCount == rowData.size();
     }
-
 }
