@@ -245,9 +245,6 @@ public class ExcelKit {
                         .setReplace(currentExportConfig.replace());
                 exportItems.add(currentExportItem);
             }
-
-            currentExportItem = null;
-            currentExportConfig = null;
         }
 
         // 创建新的工作薄。
@@ -303,7 +300,7 @@ public class ExcelKit {
 
                         // 单元格宽度
 //                        POIUtils.setColumnWidth(sheet, j, exportItems.get(j).getWidth(), cellValue);
-                        POIUtils.setColumnWidth(sheet, j, (short)-1, cellValue);
+//                        POIUtils.setColumnWidth(sheet, j, (short)-1, cellValue);
 
                         SXSSFCell cell = POIUtils.newSXSSFCell(bodyRow, j);
                         // fix: 当值为“”时,当前index的cell会失效
@@ -323,6 +320,11 @@ public class ExcelKit {
                     }
                 }
             }
+
+            //配置自动列宽 @Mark 貌似没什么卵用
+            /*for (int i = 0; i < exportItems.size(); i++) {
+                sheet.autoSizeColumn(i);
+            }*/
         }
 
         try {
